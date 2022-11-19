@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Provider } from "react-redux";
+import { store } from "./state";
 
 const client = new QueryClient();
 
@@ -11,9 +13,11 @@ const root = ReactDOM.createRoot(rootelement);
 
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={client}>
-      <App />
-    </QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={client}>
+        <App />
+      </QueryClientProvider>
+    </Provider>
   </React.StrictMode>
 );
 
